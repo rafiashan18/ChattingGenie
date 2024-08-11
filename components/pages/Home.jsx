@@ -1,5 +1,5 @@
 "use client";
-
+/* eslint-disable react/no-unescaped-entities */
 import { Chat, AccessTime, AutoAwesome } from "@mui/icons-material";
 import {
   Typography,

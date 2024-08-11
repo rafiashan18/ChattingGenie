@@ -2,6 +2,7 @@ import { ChatWrapper } from "@/components/ChatWrapper"
 import { ragChat } from "@/lib/rag-chat"
 import { redis } from "@/lib/redis"
 import { cookies } from "next/headers"
+/* eslint-disable react/no-unescaped-entities */
 
 function reconstructUrl( url ) {
   const decodedComponents = url.map((component) => decodeURIComponent(component))

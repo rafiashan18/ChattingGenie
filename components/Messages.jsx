@@ -1,5 +1,6 @@
 import { Message } from "./Message";
 import { MessageSquare } from "lucide-react";
+/* eslint-disable react/no-unescaped-entities */
 
 export const Messages = ({ messages }) => {
   return (
