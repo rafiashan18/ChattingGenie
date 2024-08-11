@@ -57,7 +57,8 @@ const router = useRouter()
             Sign In
           </Button>
           <div className="mt-4">
-            <span className="text-sm ">Don't have an account?</span>
+            <span className="text-sm "><span>Don&apos;t have an account?</span>
+            </span>
             <Link
               href="/signup"
               className=" text-sm underline hover:text-blue-400 transition-all"
