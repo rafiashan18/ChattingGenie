@@ -8,16 +8,20 @@ export const Message = ({ content, isUserMessage }) => {
   const [speechSynthesis, setSpeechSynthesis] = useState(null);
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.speechSynthesis) {
-      setSpeechSynthesis(window.speechSynthesis);
+    if (typeof window !== "undefined") {
+      if (window.speechSynthesis) {
+        setSpeechSynthesis(window.speechSynthesis);
+      }
     }
   }, []);
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(content).then(() => {
-      setIsCopied(true);
-      setTimeout(() => setIsCopied(false), 2000);
-    });
+    if (typeof window !== "undefined") {
+      navigator.clipboard.writeText(content).then(() => {
+        setIsCopied(true);
+        setTimeout(() => setIsCopied(false), 2000);
+      });
+    }
   };
 
   const speakMessage = () => {
