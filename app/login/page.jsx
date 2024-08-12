@@ -1,5 +1,5 @@
 "use client";
-/* eslint-disable react/no-unescaped-entities */
+import dynamic from "next/dynamic";
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
@@ -7,14 +7,13 @@ import { Input } from "@nextui-org/input";
 import Link from "next/link";
 import { Google } from "@mui/icons-material";
 import { Button } from "@nextui-org/react";
+import { useRouter } from "next/navigation";
 
-import { useRouter } from "next/navigation"; // Import useRouter
-
-
-export default function Login() {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-const router = useRouter()
+  const router = useRouter();
+
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
@@ -24,6 +23,7 @@ const router = useRouter()
       console.error("Error logging in:", error);
     }
   };
+
   return (
     <div className="w-full h-full flex justify-center">
       <div className="min-w-[500px] max-w-[700px] flex flex-col gap-y-4 items-center">
@@ -57,7 +57,8 @@ const router = useRouter()
             Sign In
           </Button>
           <div className="mt-4">
-            <span className="text-sm "><span>Don&apos;t have an account?</span>
+            <span className="text-sm ">
+              <span>Don&apos;t have an account?</span>
             </span>
             <Link
               href="/signup"
@@ -67,7 +68,7 @@ const router = useRouter()
             </Link>
           </div>
           <Button
-            className="mt-4 w-full rounded-md border border-white bg-transparent hover:bg-white hover:border-transparent hover:text-gray-700 transition-all "
+            className="mt-4 w-full rounded-md border border-white bg-transparent hover:bg-white hover:border-transparent hover:text-gray-700 transition-all"
             // onClick={logInWithGoogle}
           >
             <Google /> <span>Continue with Google</span>
@@ -77,4 +78,6 @@ const router = useRouter()
       </div>
     </div>
   );
-}
+};
+
+export default dynamic(() => Promise.resolve(Login), { ssr: false });

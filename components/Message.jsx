@@ -1,9 +1,10 @@
-"use client"
+"use client";
+import dynamic from 'next/dynamic';
 import { cn } from "@/lib/utils";
 import { Bot, User, Copy, Check, Volume2 } from "lucide-react";
 import { useState, useEffect } from "react";
 
-export const Message = ({ content, isUserMessage }) => {
+const Message = ({ content, isUserMessage }) => {
   const [isCopied, setIsCopied] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [speechSynthesis, setSpeechSynthesis] = useState(null);
@@ -101,3 +102,5 @@ export const Message = ({ content, isUserMessage }) => {
     </div>
   );
 };
+
+export default dynamic(() => Promise.resolve(Message), { ssr: false });

@@ -9,7 +9,10 @@ import { Google } from "@mui/icons-material";
 import { Button } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 
-export default function Signup() {
+import dynamic from "next/dynamic";
+
+
+ function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -92,3 +95,5 @@ export default function Signup() {
     </div>
   );
 }
+
+export default dynamic(() => Promise.resolve(Signup), { ssr: false });
