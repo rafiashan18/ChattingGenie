@@ -2,6 +2,7 @@
 import { Button, Textarea } from "@nextui-org/react";
 import { Send, Mic, StopCircle } from "lucide-react";
 import { useState, useEffect } from "react";
+import dynamic from 'next/dynamic'
 
 const ChatInput = ({ input, handleInputChange, handleSubmit, setInput, isLoading }) => {
   const [isRecording, setIsRecording] = useState(false);
