@@ -2,7 +2,7 @@
 import { Button, Textarea } from "@nextui-org/react";
 import { Send, Mic, StopCircle } from "lucide-react";
 import { useState, useEffect } from "react";
-import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic';
 
 const ChatInput = ({ input, handleInputChange, handleSubmit, setInput, isLoading }) => {
   const [isRecording, setIsRecording] = useState(false);
@@ -10,7 +10,7 @@ const ChatInput = ({ input, handleInputChange, handleSubmit, setInput, isLoading
   const [interimTranscript, setInterimTranscript] = useState('');
 
   useEffect(() => {
-    if ('webkitSpeechRecognition' in window) {
+    if (typeof window !== "undefined" && 'webkitSpeechRecognition' in window) {
       const recognitionInstance = new window.webkitSpeechRecognition();
       recognitionInstance.continuous = true;
       recognitionInstance.interimResults = true;
